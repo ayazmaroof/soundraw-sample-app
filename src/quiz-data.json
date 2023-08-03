@@ -1,0 +1,29 @@
+[
+  { "id": 1,
+    "questionText": "What’s the first thing you should do when you need motivation?",
+    "type": "singleChoice",
+    "choices": [
+      { "id": "1a" ,"text": "Read a book", "value": 5 },
+      { "id": "1b","text": "Scroll through social media", "value": 0 },
+      { "id": "1c", "text": "Go to the gym", "value": 3 },
+      { "id": "1d","text": "Walk in the park", "value": 7 }
+    ]},
+  { "id": 2,
+    "questionText": "What is the value of pi (rounded to the nearest thousandth)?",
+    "type": "singleChoice",
+    "choices": [
+      { "id": "2a" ,"text": "64", "value": 0 },
+      { "id": "2b","text": "3.142", "value": 1 },
+      { "id": "2c", "text": "16.789", "value": 0 },
+      { "id": "2d","text": "100,000", "value": 0 }
+    ]},
+  { "id": 3,
+    "questionText": "Which of the following characters has Tom Cruise played?",
+    "type": "multipleChoice",
+    "choices": [
+      { "id": "3a" ,"text": "Ethan Hunt", "value": 1 },
+      { "id": "3b","text": "Peter Quill", "value": 0 },
+      { "id": "3c", "text": "Maverick", "value": 1 },
+      { "id": "3d","text": "Jerry Maguire", "value": 1 }
+    ]}
+]
