@@ -9,5 +9,5 @@ export interface Question {
   text: string;
   type: string;
   answerOptions: AnswerOption[];
-  selectedAnswer: string | [];
+  selectedAnswer: string | string[];
 }
