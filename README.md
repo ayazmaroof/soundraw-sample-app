@@ -1,5 +1,9 @@
 # soundraw-sample-app
 
+## Application
+
+The application is a simple quiz web app built using Vue 3. It uses static data to render single and multiple choice questions and allows the user to select answers and submit them. Once a user submits their answer the app calculates the final score and displays it. 
+
 ## Project Setup
 
 I recommend using the current LTS version of Node (v18.17.0).
@@ -47,7 +51,3 @@ npm run test:e2e
 ```sh
 npm run lint
 ```
-
-## Application
-
-The application is a simple quiz web app built using Vue 3. It uses static data to render single and multiple choice questions and allows the user to select answers and submit them. Once a user submits their answer the app calculates the final score and displays it. 
