@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "question1",
     "text": "What’s the first thing you should do when you need motivation?",
     "type": "singleChoice",
     "answerOptions": [
@@ -24,10 +24,11 @@
         "text": "Walk in the park",
         "value": 7
       }
-    ]
+    ],
+    "selectedAnswer": ""
   },
   {
-    "id": 2,
+    "id": "question2",
     "text": "What is the value of pi (rounded to the nearest thousandth)?",
     "type": "singleChoice",
     "answerOptions": [
@@ -51,10 +52,11 @@
         "text": "100,000",
         "value": 0
       }
-    ]
+    ],
+    "selectedAnswer": ""
   },
   {
-    "id": 3,
+    "id": "question3",
     "text": "Which of the following characters has Tom Cruise played?",
     "type": "multipleChoice",
     "answerOptions": [
@@ -78,6 +80,7 @@
         "text": "Jerry Maguire",
         "value": 1
       }
-    ]
+    ],
+    "selectedAnswer": []
   }
 ]
