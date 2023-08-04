@@ -2,7 +2,7 @@
 
 ## Application
 
-The application is a simple quiz web app built using Vue 3. It uses static data to render single and multiple choice questions and allows the user to select answers and submit them. Once a user submits their answer the app calculates the final score and displays it. 
+The application is a simple quiz web app built using Vue 3. It uses static data to render single and multiple choice questions and allows the user to select answers and submit them. Once a user submits their answers the app calculates the final score and displays it. 
 
 ## Project Setup
 
