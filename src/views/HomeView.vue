@@ -28,12 +28,18 @@ function answersSubmitted() {
   })
 
   const totalScore = scores.reduce((accumulator = 0, score = 0) => accumulator + score)
-  if(totalScore) {
+  if(totalScore !== undefined) {
    finalScore.value = totalScore;
     showScore.value = true;
+    questions.value.forEach(question => {
+      if(question.type === 'singleChoice') {
+        question.selectedAnswer = ""
+      } else {
+        question.selectedAnswer = []
+      }
+    })
   }
 }
-
 </script>
 
 <template>
