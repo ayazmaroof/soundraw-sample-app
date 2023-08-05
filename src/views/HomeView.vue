@@ -45,13 +45,12 @@ function answersSubmitted() {
 <template>
   <main>
     <div>
-      <div id='quiz' v-if='!showScore' class='container overflow-hidden'>
-        <div class='row g-5 p-3'>
-          <div class='col-12' v-for='question in questions' v-bind:key='question.id' :id='question.id'>
-            <div>
-              <span>{{ question.text }}</span>
-              <br />
-              <span v-for='answerOption in question.answerOptions' :key='answerOption.id'>
+      <div id='quiz' v-if='!showScore' class='d-grid gap-3 mt-4 justify-content-center'>
+        <div class='p-2' v-for='question in questions' v-bind:key='question.id' :id='question.id'>
+          <div>
+            <span>{{ question.text }}</span>
+            <br />
+            <span v-for='answerOption in question.answerOptions' :key='answerOption.id'>
                   <span v-if='question.type === "singleChoice"'>
                     <input type='radio' :name='question.id' :id='answerOption.id' :value='answerOption.id'
                            v-model='question.selectedAnswer'>
@@ -64,10 +63,8 @@ function answersSubmitted() {
                   </span>
                   <br />
                 </span>
-            </div>
           </div>
         </div>
-
         <button type='button' class='btn btn-primary' :disabled='disableSubmit' @click='answersSubmitted'>Submit
         </button>
       </div>
