@@ -47,28 +47,28 @@ function answersSubmitted() {
     <div>
       <div id='quiz' v-if='!showScore' class='d-grid mt-4 gap-3 justify-content-center'>
         <div v-for='question in questions' v-bind:key='question.id' :id='question.id'>
-            <span>{{ question.text }}</span>
-            <br />
-            <div class='form-check' v-for='answerOption in question.answerOptions' :key='answerOption.id'>
+          <span>{{ question.text }}</span>
+          <br />
+          <div class='form-check' v-for='answerOption in question.answerOptions' :key='answerOption.id'>
               <span v-if='question.type === "singleChoice"'>
                 <input class='form-check-input' type='radio' :name='question.id' :id='answerOption.id'
                        :value='answerOption.id'
                        v-model='question.selectedAnswer'>
                 <label class='form-check-label' :for='answerOption.id'>{{ answerOption.text }}</label>
               </span>
-              <span v-if='question.type === "multipleChoice"'>
+            <span v-if='question.type === "multipleChoice"'>
                 <input class='form-check-input' type='checkbox' :id='answerOption.id' :value='answerOption.id'
                        v-model='question.selectedAnswer'>
                 <label class='form-check-label' :for='answerOption.id'>{{ answerOption.text }}</label>
               </span>
-              <br />
-            </div>
+            <br />
+          </div>
         </div>
         <button type='button' class='btn btn-primary' :disabled='disableSubmit' @click='answersSubmitted'>Submit
         </button>
       </div>
-      <div id='score' v-if='showScore'>
-        You scored {{ finalScore }} points.
+      <div id='score' v-if='showScore' class='d-grid p-5 m-5'>
+        <div class='text-success text-center fs-2'>You scored {{ finalScore }} points.</div>
       </div>
     </div>
   </main>
