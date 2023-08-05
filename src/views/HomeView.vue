@@ -45,24 +45,24 @@ function answersSubmitted() {
 <template>
   <main>
     <div>
-      <div id='quiz' v-if='!showScore' class='d-grid gap-3 mt-4 justify-content-center'>
-        <div class='p-3' v-for='question in questions' v-bind:key='question.id' :id='question.id'>
-          <div>
+      <div id='quiz' v-if='!showScore' class='d-grid mt-4 gap-3 justify-content-center'>
+        <div v-for='question in questions' v-bind:key='question.id' :id='question.id'>
             <span>{{ question.text }}</span>
             <br />
-            <div class='py-1' v-for='answerOption in question.answerOptions' :key='answerOption.id'>
+            <div class='form-check' v-for='answerOption in question.answerOptions' :key='answerOption.id'>
               <span v-if='question.type === "singleChoice"'>
-                <input type='radio' :name='question.id' :id='answerOption.id' :value='answerOption.id'
+                <input class='form-check-input' type='radio' :name='question.id' :id='answerOption.id'
+                       :value='answerOption.id'
                        v-model='question.selectedAnswer'>
-                <label class='ps-2' :for='answerOption.id'>{{ answerOption.text }}</label>
+                <label class='form-check-label' :for='answerOption.id'>{{ answerOption.text }}</label>
               </span>
               <span v-if='question.type === "multipleChoice"'>
-                <input type='checkbox' :id='answerOption.id' :value='answerOption.id' v-model='question.selectedAnswer'>
-                <label class='ps-2' :for='answerOption.id'>{{ answerOption.text }}</label>
+                <input class='form-check-input' type='checkbox' :id='answerOption.id' :value='answerOption.id'
+                       v-model='question.selectedAnswer'>
+                <label class='form-check-label' :for='answerOption.id'>{{ answerOption.text }}</label>
               </span>
               <br />
             </div>
-          </div>
         </div>
         <button type='button' class='btn btn-primary' :disabled='disableSubmit' @click='answersSubmitted'>Submit
         </button>
