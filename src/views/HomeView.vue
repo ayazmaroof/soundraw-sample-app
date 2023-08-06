@@ -1,5 +1,4 @@
 <script setup lang='ts'>
-// import TheWelcome from '../components/TheWelcome.vue'
 import quizData from '../quiz-data.json';
 import type { Question } from '@/interfaces/questions';
 import { computed, ref } from 'vue';
@@ -9,7 +8,7 @@ import { useRouter } from 'vue-router';
 
 const questions: Ref<Question[]> = ref(quizData);
 const router = useRouter();
-let scoreStore = useScoreStore()
+let scoreStore = useScoreStore();
 scoreStore.resetScore();
 
 const disableSubmit = computed(() => {
@@ -25,6 +24,7 @@ function resetQuiz() {
     }
   });
 }
+
 function answersSubmitted() {
   const scores: (number | undefined)[] = questions.value.map((question) => {
     if (question.type === 'singleChoice') {
@@ -55,21 +55,19 @@ function answersSubmitted() {
           <span>{{ question.text }}</span>
           <br />
           <div class='form-check' v-for='answerOption in question.answerOptions' :key='answerOption.id'>
-              <span v-if='question.type === "singleChoice"'>
-                <input class='form-check-input' type='radio' :name='question.id' :id='answerOption.id'
-                       :value='answerOption.id'
-                       v-model='question.selectedAnswer'>
-                <label class='form-check-label' :for='answerOption.id'>{{ answerOption.text }}</label>
-              </span>
-            <span v-if='question.type === "multipleChoice"'>
-                <input class='form-check-input' type='checkbox' :id='answerOption.id' :value='answerOption.id'
-                       v-model='question.selectedAnswer'>
-                <label class='form-check-label' :for='answerOption.id'>{{ answerOption.text }}</label>
-              </span>
+            <input v-if='question.type === "singleChoice"'
+                   class='form-check-input' type='radio' :name='question.id' :id='answerOption.id'
+                   :value='answerOption.id' v-model='question.selectedAnswer'>
+            <input v-if='question.type === "multipleChoice"'
+                   class='form-check-input' type='checkbox' :name='question.id' :id='answerOption.id'
+                   :value='answerOption.id'
+                   v-model='question.selectedAnswer'>
+            <label class='form-check-label' :for='answerOption.id'>{{ answerOption.text }}</label>
             <br />
           </div>
         </div>
-        <button id='submit' type='button' class='btn btn-primary' :disabled='disableSubmit' @click='answersSubmitted'>Submit
+        <button id='submit' type='button' class='btn btn-primary' :disabled='disableSubmit' @click='answersSubmitted'>
+          Submit
         </button>
       </div>
     </div>
