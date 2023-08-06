@@ -4,16 +4,27 @@ import quizData from '../quiz-data.json';
 import type { Question } from '@/interfaces/questions';
 import { computed, ref } from 'vue';
 import type { Ref } from 'vue';
+import { useScoreStore } from '@/stores/score';
+import { useRouter } from 'vue-router';
 
 const questions: Ref<Question[]> = ref(quizData);
+const router = useRouter();
+let scoreStore = useScoreStore()
+scoreStore.resetScore();
 
 const disableSubmit = computed(() => {
   return questions.value.some((question) => !question.selectedAnswer || question.selectedAnswer.length === 0);
 });
 
-const showScore = ref(false);
-const finalScore = ref(0);
-
+function resetQuiz() {
+  questions.value.forEach(question => {
+    if (question.type === 'singleChoice') {
+      question.selectedAnswer = '';
+    } else {
+      question.selectedAnswer = [];
+    }
+  });
+}
 function answersSubmitted() {
   const scores: (number | undefined)[] = questions.value.map((question) => {
     if (question.type === 'singleChoice') {
@@ -29,15 +40,9 @@ function answersSubmitted() {
 
   const totalScore = scores.reduce((accumulator = 0, score = 0) => accumulator + score);
   if (totalScore !== undefined) {
-    finalScore.value = totalScore;
-    showScore.value = true;
-    questions.value.forEach(question => {
-      if (question.type === 'singleChoice') {
-        question.selectedAnswer = '';
-      } else {
-        question.selectedAnswer = [];
-      }
-    });
+    scoreStore.score = totalScore;
+    router.push('/score');
+    resetQuiz();
   }
 }
 </script>
@@ -45,7 +50,7 @@ function answersSubmitted() {
 <template>
   <main>
     <div>
-      <div id='quiz' v-if='!showScore' class='d-grid mt-4 gap-3 justify-content-center'>
+      <div id='quiz' class='d-grid mt-4 gap-3 justify-content-center'>
         <div v-for='question in questions' v-bind:key='question.id' :id='question.id'>
           <span>{{ question.text }}</span>
           <br />
@@ -66,9 +71,6 @@ function answersSubmitted() {
         </div>
         <button type='button' class='btn btn-primary' :disabled='disableSubmit' @click='answersSubmitted'>Submit
         </button>
-      </div>
-      <div id='score' v-if='showScore' class='d-grid p-5 m-5'>
-        <div class='text-success text-center fs-2'>You scored {{ finalScore }} points.</div>
       </div>
     </div>
   </main>
