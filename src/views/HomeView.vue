@@ -69,7 +69,7 @@ function answersSubmitted() {
             <br />
           </div>
         </div>
-        <button type='button' class='btn btn-primary' :disabled='disableSubmit' @click='answersSubmitted'>Submit
+        <button id='submit' type='button' class='btn btn-primary' :disabled='disableSubmit' @click='answersSubmitted'>Submit
         </button>
       </div>
     </div>
